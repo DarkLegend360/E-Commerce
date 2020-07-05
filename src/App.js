@@ -1,19 +1,15 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import HomePage from './pages/homepage/homepage';
 import { Switch, Route } from 'react-router-dom';
-
-function Processor() {
-  return (<h1>HEllo</h1>);
-  }
-
+import ShopPage from './pages/shop-page/shop-page';
 
 function App() {
   return (
     <div>
       <Switch>
         <Route exact path='/' component={HomePage}/>
-        <Route path="/processor" component={Processor}/>
+        <Route path="/shop" component={ShopPage}/>
       </Switch>
     </div>
   );
