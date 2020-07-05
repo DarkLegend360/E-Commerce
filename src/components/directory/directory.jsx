@@ -17,7 +17,7 @@ class DirectoryMenu extends Component {
                     imgURL:"https://www.aorus.com/upload/Admin/images/17620530_1487693444577057_1224683349174927322_o.jpg",
                 },{
                     id:3,
-                    title:"Power Supply",
+                    title:"PSU",
                     imgURL:"https://static.techspot.com/articles-info/1440/images/S-3.jpg",
                 },{
                     id:4,
@@ -35,7 +35,7 @@ class DirectoryMenu extends Component {
     }
     render() {
         return (<div className="dir-menu">
-    {this.state.sections.map(({id,title,imgURL,size})=> <MenuItem key={id} title={title} imgURL={imgURL} size={size}/>)}
+    {this.state.sections.map(({id,...otherProps})=> <MenuItem key={id} {...otherProps}/>)}
 </div>);
     }
 }
