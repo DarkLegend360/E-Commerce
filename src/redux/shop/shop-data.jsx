@@ -1,5 +1,5 @@
-const SHOP_DATA = [
-  {
+const SHOP_DATA = {
+  Processor:{
     id: 1,
     title: 'CPU',
     routeName: 'hats',
@@ -60,7 +60,7 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  GPU:{
     id: 2,
     title: 'GPU',
     routeName: 'sneakers',
@@ -115,7 +115,7 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  Motherboard:{
     id: 3,
     title: 'Motherboard',
     routeName: 'jackets',
@@ -152,7 +152,7 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  PSU:{
     id: 4,
     title: 'PSU',
     routeName: 'womens',
@@ -201,7 +201,7 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  RAM:{
     id: 5,
     title: 'RAM',
     routeName: 'mens',
@@ -244,6 +244,6 @@ const SHOP_DATA = [
       }
     ]
   }
-];
+};
 
 export default SHOP_DATA;
