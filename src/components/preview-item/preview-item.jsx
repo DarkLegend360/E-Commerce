@@ -12,7 +12,7 @@ function PreviewItem({item,addItem}) {
             <span className="name">{name}</span>
             <span className="price">{price}$</span>
         </div>
-        <CustomButton inverted onClick={()=>addItem(item)}>Add To Cart</CustomButton>
+        <CustomButton style={{position:"absolute",top:250}} inverted onClick={()=>addItem(item)}>Add To Cart</CustomButton>
     </div>);
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
-import "./homepage.scss";
 import DirectoryMenu from "../../components/directory/directory";
+import {HomePageContainer} from "./homepage-styles";
 function HomePage() {
-    return <div className="homepage">
+    return <HomePageContainer>
         <DirectoryMenu />
-    </div>;
+    </HomePageContainer>;
 }
 
 export default HomePage;

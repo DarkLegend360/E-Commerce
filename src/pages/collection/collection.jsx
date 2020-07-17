@@ -5,7 +5,8 @@ import { selectCollection } from "../../redux/shop/shop-selector";
 import PreviewItem from "../../components/preview-item/preview-item";
 
 
-const CollectionPage = ({collection}) => {
+const CollectionPage = ({collection,mx}) => {
+    if(collection==null) return null;
     const {title,items} =collection;
     return (<div className="collections">
         <div className="title"><h2>{title}</h2></div>
@@ -14,7 +15,8 @@ const CollectionPage = ({collection}) => {
 }
 
 const mapStateToProps = (state,ownProps) => ({
-    collection:selectCollection(ownProps.match.params.collectionId)(state)
+    collection:selectCollection(ownProps.match.params.collectionId)(state),
+    mx:ownProps.match
 })
 
 export default connect(mapStateToProps)(CollectionPage);
