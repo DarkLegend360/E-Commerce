@@ -5,36 +5,15 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import ShopPage from './pages/shop-page/shop-page';
 import Header from './components/header/header';
 import Account from './pages/useraccount/user-account';
-import {auth, createUserAccount,} from "./firebase/firebase.util";//addCollectionsAndDocuments
 import {connect} from "react-redux";
-import {setCurrentUser} from "./redux/user/user-actions";
 import {selectCurrentUser } from './redux/user/user-selectors';
 import {createStructuredSelector} from "reselect";
 import CheckoutPage from './pages/checkout/checkout';
-// import {selectCollectionForPreview} from "./redux/shop/shop-selector";
+import { checkUserSession } from './redux/user/user-actions';
 class App extends Component {
-  unSubscribeFromAuth = null;
   componentDidMount() {
-    const {setCurrentUser} = this.props;//collectionArray
-    this.unSubscribeFromAuth =  auth.onAuthStateChanged(async userAuth=> {
-      if(userAuth) {
-        const userRef = await createUserAccount(userAuth);
-        userRef.onSnapshot(snapShot=>{
-          setCurrentUser({
-            id:snapShot.id,
-            ...snapShot.data()
-          });
-          console.log(this.state);
-          
-        });
-        
-      }
-      setCurrentUser(userAuth);
-      // addCollectionsAndDocuments('collections',collectionArray.map(({title,items})=>({title,items})));
-    })
-  }
-  componentWillUnmount() {
-    this.unSubscribeFromAuth();
+    const {checkUserSession} = this.props;
+    checkUserSession();
   }
   render() {
     return (
@@ -51,13 +30,12 @@ class App extends Component {
   }
 }
 
-const mapStatetoProps = createStructuredSelector ({
-  currentUser: selectCurrentUser,
-  // collectionArray:selectCollectionForPreview
+const mapDispatchToProps = dispatch => ({
+  checkUserSession:()=>dispatch(checkUserSession()),
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+const mapStatetoProps = createStructuredSelector ({
+  currentUser: selectCurrentUser,
 });
 
 export default connect(mapStatetoProps,mapDispatchToProps)(App);
